@@ -1,0 +1,148 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Address Book API",
+        "version": "1.0.0",
+        "description": "Address Book API",
+        "contact": {
+            "name": "Ravish Rathod",
+            "email": "rathod.ravish@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "paths": {
+        "/addresses/{addressId}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        },
+                        "description": "Address fetched"
+                    }
+                },
+                "summary": "Get an address"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Address"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "Address Updated"
+                    }
+                },
+                "summary": "Update an address"
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+
+                    }
+                },
+                "summary": "Delete an address"
+            },
+            "parameters": [
+                {
+                    "name": "addressId",
+                    "description": "The address Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/addresses": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        },
+                        "description": "Address fetched"
+                    }
+                },
+                "summary": "List Addresses"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Address"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Address created"
+                    }
+                },
+                "summary": "Post Addressess"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Address": {
+                "title": "Root Type for Address",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "zip": {
+                        "description": "411020",
+                        "type": "integer"
+                    },
+                    "address1": {
+                        "description": "abcedef",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1234,
+                    "city": "Pune",
+                    "state": "Maharashtra"
+                }
+            }
+        }
+    }
+}
